@@ -14,14 +14,15 @@ class PostRepositoryImpl implements PostRepository {
   const PostRepositoryImpl(this._api, this._firebaseStorageApi);
 
   @override
-  Future<Either<Failure, List<Post>>> getAllPosts() async => await _api.getAllPosts();
+  Future<Either<Failure, List<Post>>> getAllPosts() => _api.getAllPosts();
 
   @override
-  Future<Either<Failure, void>> createPost(final Post newPost) async => await _api.uploadNewPost(newPost);
+  Future<Either<Failure, void>> createPost(final Post newPost) => _api.uploadNewPost(newPost);
 
   @override
-  Future<String> uploadPostImage(File image) async => await _firebaseStorageApi.uploadImage(image);
+  Future<String> uploadPostImage(final File image) => _firebaseStorageApi.uploadImage(image);
 
   @override
-  Future<Either<Failure, List<Post>>> getUserPosts(final String userId) async => await _api.getUserPosts(userId);
+  Future<Either<Failure, List<Post>>> getUserPosts(final String userId) =>
+      _api.getUserPosts(userId);
 }

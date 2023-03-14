@@ -19,15 +19,21 @@ class UserRepositoryImpl implements UserRepository {
   );
 
   @override
-  Future<Either<Failure, AppUser>> registerUserWithEmailAndPassword(final String email, final String password) async =>
-      await _authApi.registerWithEmailAndPassword(email, password);
+  Future<Either<Failure, AppUser>> registerUserWithEmailAndPassword(
+    final String email,
+    final String password,
+  ) =>
+      _authApi.registerWithEmailAndPassword(email, password);
 
   @override
-  Future<Either<Failure, AppUser>> loginWithEmailAndPassword(final String email, final String password) async =>
-      await _authApi.loginWithEmailAndPassword(email, password);
+  Future<Either<Failure, AppUser>> loginWithEmailAndPassword(
+    final String email,
+    final String password,
+  ) =>
+      _authApi.loginWithEmailAndPassword(email, password);
 
   @override
-  Future<Either<Failure, AppUser>> loginWithGoogle() async => await _authApi.loginWithGoogle();
+  Future<Either<Failure, AppUser>> loginWithGoogle() => _authApi.loginWithGoogle();
 
   @override
   bool isUserLoggedIn() => _authApi.isUserLoggedIn();
@@ -43,13 +49,15 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<Failure, PostUser>> getPostUserById(final String userId) async => await _userApi.getPostUserById(userId);
+  Future<Either<Failure, PostUser>> getPostUserById(final String userId) =>
+      _userApi.getPostUserById(userId);
 
   @override
-  Future<Either<Failure, void>> selectPlan(final String email, final int plan) async => await _userApi.sendSubscriptionPlan(email, plan);
+  Future<Either<Failure, void>> selectPlan(final String email, final int plan) =>
+      _userApi.sendSubscriptionPlan(email, plan);
 
   @override
-  Future<Either<Failure, void>> insertUser(AppUser newUser) async => await _userApi.insertUser(newUser);
+  Future<Either<Failure, void>> insertUser(final AppUser newUser) => _userApi.insertUser(newUser);
 
   @override
   String? getCurrentUserId() => _authApi.currentUserId;
