@@ -39,6 +39,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 const Text('Let\'s sign you in', style: titleTextStyle),
                 const SizedBox(height: 50),
                 PrettyTextFormField(
+                  key: const Key('emailTextField'),
                   controller: _emailController,
                   labelText: 'Email',
                   isEmail: true,
@@ -48,6 +49,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 PrettyTextFormField(
+                  key: const Key('passwordTextField'),
                   controller: _passwordController,
                   labelText: 'Password',
                   focusNode: _passwordFocusNode,
@@ -60,12 +62,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       size: 20,
                     ),
                   ),
-                  onFieldSubmitted: () => _loginWithEmailAndPassword(_emailController.text.trim(), _passwordController.text.trim()),
+                  onFieldSubmitted: () => _loginWithEmailAndPassword(
+                    _emailController.text.trim(),
+                    _passwordController.text.trim(),
+                  ),
                 ),
                 const SizedBox(height: 50),
                 PrettyActionButton.text(
+                  key: const Key('signInButton'),
                   label: 'Sign in',
-                  onTapHandler: () => _loginWithEmailAndPassword(_emailController.text.trim(), _passwordController.text.trim()),
+                  onTapHandler: () => _loginWithEmailAndPassword(
+                    _emailController.text.trim(),
+                    _passwordController.text.trim(),
+                  ),
                 ),
                 const SizedBox(height: 15),
                 Center(
@@ -78,7 +87,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           text: 'Sign up',
                           style: smallTextStyle.copyWith(color: secondaryColor),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => Navigator.of(context).pushNamed(RouteGenerator.registerScreen),
+                            ..onTap = () =>
+                                Navigator.of(context).pushNamed(RouteGenerator.registerScreen),
                         ),
                       ],
                     ),
@@ -89,12 +99,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 PrettyActionButton.google(
-                  onTapHandler: () => ref.read(userNotifierChangeProvider.notifier).loginWithGoogle(),
+                  onTapHandler: () =>
+                      ref.read(userNotifierChangeProvider.notifier).loginWithGoogle(),
                 ),
                 const SizedBox(height: 20),
-                PrettyActionButton.github(
-                  onTapHandler: () {},
-                ),
+                PrettyActionButton.github(onTapHandler: () {}),
               ],
             ),
           ),

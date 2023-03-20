@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:photo_app/app/error/failure.dart';
 import 'package:photo_app/data/source_remote/post/post_api.dart';
 import 'package:photo_app/domain/entity/post.dart';
 
